@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { removeSeat } from "../redux/slices/movieTicketSlice";
 
 export default function Tickets() {
   const { selectedSeats } = useSelector((state) => {
@@ -9,13 +10,13 @@ export default function Tickets() {
   const dispatch = useDispatch();
 
   const handleRemove = (seatNumber) => {
-    dispatch({ type: "removeSeat", payload: seatNumber });
+    dispatch(removeSeat(seatNumber));
   };
 
   console.log("selectedSeats", selectedSeats);
   return (
     <div>
-      <h1>Danh sách vé đang chọn</h1>
+      <h3>Danh sách vé đang chọn</h3>
       {selectedSeats.map((item) => {
         return (
           <div className="mb-2">

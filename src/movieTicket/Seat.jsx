@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { selectSeat } from "../redux/slices/movieTicketSlice";
+import { selectSeat } from "../redux/slices/movieTicketSlice";
 
 export default function Seat({ seat, isSelected }) {
   const dispatch = useDispatch();
@@ -10,10 +10,7 @@ export default function Seat({ seat, isSelected }) {
   const handleSelect = () => {
     // setIsSelected(!isSelected);
     // dispatch
-    dispatch({
-      type: "selectSeat",
-      payload: { ...seat, isSelected: !isSelected },
-    });
+    dispatch(selectSeat({ ...seat, isSelected: !isSelected }));
   };
 
   // thêm class phân biệt trạng thái đặt chổ
@@ -27,7 +24,12 @@ export default function Seat({ seat, isSelected }) {
   }
 
   return (
-    <button key={seat.soGhe} className={classes} onClick={handleSelect}>
+    <button
+      key={seat.soGhe}
+      className={classes}
+      onClick={handleSelect}
+      disabled={seat.daDat}
+    >
       {seat.soGhe}
     </button>
   );
