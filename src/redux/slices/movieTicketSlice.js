@@ -33,8 +33,13 @@ const movieTicketSlice = createSlice({
 
       return { ...state, selectedSeats, totalPrice };
     },
+    resetSeat: () => {
+      const selectedSeats = [];
+      const totalPrice = 0;
+      return { selectedSeats, totalPrice };
+    },
   },
 });
 
-export const { selectSeat, removeSeat } = movieTicketSlice.actions;
+export const { selectSeat, removeSeat, resetSeat } = movieTicketSlice.actions;
 export default movieTicketSlice.reducer;

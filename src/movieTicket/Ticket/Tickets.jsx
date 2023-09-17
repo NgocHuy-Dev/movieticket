@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeSeat } from "../redux/slices/movieTicketSlice";
+import { removeSeat } from "../../redux/slices/movieTicketSlice";
+import { resetSeat } from "../../redux/slices/movieTicketSlice";
+import TicketStatus from "./TicketStatus";
 
 export default function Tickets() {
   const { selectedSeats } = useSelector((state) => {
@@ -15,6 +17,7 @@ export default function Tickets() {
 
   const handleBook = () => {
     alert("Chúc mừng bạn đã đặt vé thành công");
+    dispatch(resetSeat());
   };
 
   const dispatch = useDispatch();
@@ -28,20 +31,7 @@ export default function Tickets() {
     <div>
       <h3 className="text-white text-center">Danh sách vé đang chọn</h3>
 
-      <div className="ticket-status">
-        <div className="status">
-          <button className="btn btn-danger text-danger">##</button>
-          <span className="status-text">Ghế đã được đặt</span>
-        </div>
-        <div className="status">
-          <button className="btn btn-success text-success">##</button>
-          <span className="status-text">Ghế đang chọn</span>
-        </div>
-        <div className="status">
-          <button className="btn btn-secondary text-secondary">##</button>
-          <span className="status-text">Ghế trống</span>
-        </div>
-      </div>
+      <TicketStatus />
       <table className="table table-bordered">
         <thead>
           <tr>

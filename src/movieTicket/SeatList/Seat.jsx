@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { selectSeat } from "../redux/slices/movieTicketSlice";
+import { selectSeat } from "../../redux/slices/movieTicketSlice";
 
 export default function Seat({ seat, isSelected }) {
   const dispatch = useDispatch();

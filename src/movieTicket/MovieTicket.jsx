@@ -1,8 +1,8 @@
 import React from "react";
 import data from "./danhSachGhe.json";
 import { useSelector } from "react-redux";
-import SeatList from "./SeatList";
-import Tickets from "./Tickets";
+import SeatList from "./SeatList/SeatList";
+import Tickets from "./Ticket/Tickets";
 
 export default function MovieTicket() {
   return (
