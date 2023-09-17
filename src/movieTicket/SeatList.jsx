@@ -1,26 +1,33 @@
 import React from "react";
 
-import { useSelector } from "react-redux";
 import SeatRows from "./SeatRows";
 
+import SeatHead from "./SeatHead";
+
 export default function SeatList({ seats }) {
-  // const { selectedSeats } = useSelector((state) => {
-  //   return state.busTicket;
-  // });
+  let soGheList = seats[0].danhSachGhe;
+  console.log("soGheList", soGheList);
+  // loại bỏ phần tử đầu chứ thông tin số ghế
+  let seatList = seats.slice(1);
   return (
     <div className="row">
-      <div className="col-md-12 text-center bg-warning">Màn hình</div>
-
-      {seats.map((seat, index) => {
-        // Tìm xem ghế hiện tại có đang trong danh sách ghế đang chọn hay không
-        // const isSelected = selectedSeats.find((item) => item.id === seat.id);
-        // console.log("danh sách ghế:", seat.danhSachGhe);
+      <div className="col-md-12 text-center bg-warning monitor">
+        <h3>Màn hình</h3>
+      </div>
+      <div className="row seat-head">
+        <div className="col-md-1"></div>
+        <div className="col-md-11">
+          <SeatHead seatHead={soGheList} />
+        </div>
+      </div>
+      {seatList.map((seat, index) => {
         return (
           <>
             <div className="row">
               <div className="col-1">
-                <div className="btn text-yellow">{seat.hang}</div>
+                <div className="btn text-yellow seat-column">{seat.hang}</div>
               </div>
+
               <div className="col-11" key={index}>
                 {/* <SeatItem seats={seat.danhSachGhe} /> */}
                 <SeatRows seatRows={seat.danhSachGhe} />
